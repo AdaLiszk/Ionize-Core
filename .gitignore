@@ -1,0 +1,24 @@
+*.*~
+*.lock
+/.env
+
+# Ignore temp/log files
+docs/_site
+ionize/Logs/*
+ionize/Temp/*
+
+# Ignore Coverage Reports
+/tests/Coverage/*
+/coverage.xml
+
+# IntelliJ IDE folders
+/.idea
+
+# Eclipse IDE folders
+/.buildpath
+/.settings
+/.project
+
+# Composer
+/composer.phar
+/vendor/*
