@@ -1,11 +1,13 @@
+[Home](sitemap.md) » Introduction
+
 # Ionize CMS 2.0 Development
 
 [![Build-Status](https://travis-ci.org/adaliszk/ionize-core.svg?branch=development)](https://travis-ci.org/adaliszk/ionize-core)
-[![Code-Coverage](https://codecov.io/gh/adaliszk/ionize-core/branch/development/graph/badge.svg)](https://codecov.io/gh/adaliszk/ionize-core)
-[![Code Climate](https://codeclimate.com/github/adaliszk/ionize-core.svg)](https://codeclimate.com/github/adaliszk/ionize-core)
-[![Issues](https://img.shields.io/github/issues/adaliszk/ionize-core.svg)](https://github.com/adaliszk/ionize-core/issues)
-[![Stars](https://img.shields.io/github/stars/adaliszk/ionize-core.svg)](https://github.com/adaliszk/ionize-core/stargazers)
+[![Codecov](https://codecov.io/gh/adaliszk/ionize-core/branch/development/graph/badge.svg)](https://codecov.io/gh/adaliszk/ionize-core)
+[![CodeFactor](https://www.codefactor.io/repository/github/adaliszk/ionize-core/badge)](https://www.codefactor.io/repository/github/adaliszk/ionize-core)
+[![Issues](https://img.shields.io/github/issues/adaliszk/ionize-core.svg?label=open%20issues)](https://github.com/adaliszk/ionize-core/issues)
 [![Forks](https://img.shields.io/github/forks/adaliszk/ionize-core.svg)](https://github.com/adaliszk/ionize-core/network)
+[![Stars](https://img.shields.io/github/stars/adaliszk/ionize-core.svg)](https://github.com/adaliszk/ionize-core/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
 ### My Fork Goals
@@ -32,10 +34,6 @@ I'am using Ionize for my static websites and my projects public frontend.
 ---
 
 # Ionize CMS
-[![Issues](https://img.shields.io/github/issues/ionize/ionize.svg)](https://github.com/ionize/ionize/issues)
-[![Forks](https://img.shields.io/github/forks/ionize/ionize.svg)](https://github.com/ionize/ionize/network)
-[![Stars](https://img.shields.io/github/stars/ionize/ionize.svg)](https://github.com/ionize/ionize/stargazers)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.md)
 
 Ionize is an Open Source PHP Content Management system created for webdesigners
 and developers.Ionize is a free professional and natively multilingual PHP CMS,

@@ -1,0 +1,90 @@
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/6.1/phpunit.xsd"
+
+         bootstrap="vendor/autoload.php"
+
+         processIsolation="true"
+         backupGlobals="false"
+         
+         colors="true">
+         
+    <filter>
+        <whitelist
+                addUncoveredFilesFromWhitelist="true"
+                processUncoveredFilesFromWhitelist="true">
+
+            <directory suffix=".php">./ionize</directory>
+            <directory suffix=".md">./docs</directory>
+        </whitelist>
+    </filter>
+    
+    <logging>
+        <log type="coverage-html" target="./tests/Coverage/"/>
+        <log type="coverage-clover" target="coverage.xml"/>
+    </logging>
+
+    <testsuites>
+    
+    	<!-- Basic Testsuites -->
+    
+        <testsuite name="unit">
+            <directory>tests/Unit</directory>
+        </testsuite>
+        
+        <testsuite name="acceptance">
+            <directory>tests/Acceptance</directory>
+        </testsuite>
+        
+        <testsuite name="integration">
+            <directory>tests/Integration</directory>
+        </testsuite>
+        
+        <testsuite name="performance">
+            <directory>tests/Performance</directory>
+        </testsuite>
+
+        <testsuite name="documentation">
+            <directory>tests/Documentation</directory>
+        </testsuite>
+        
+        <!-- Complex Testsuites for branches -->
+        
+        <!-- Branch: ^(bug-[a-zA-Z0-9]+)$ -->
+        <testsuite name="bug">
+            <directory>tests/Unit</directory>
+            <directory>tests/Integration</directory>
+        </testsuite>
+        
+        <!-- Branch: ^(feature-[a-zA-Z0-9]+)$ -->
+        <testsuite name="feature">
+            <directory>tests/Unit</directory>
+            <directory>tests/Acceptance</directory>
+            <directory>tests/Integration</directory>
+        </testsuite>
+        
+        <!-- Branch: ^(refactor-[a-zA-Z0-9]+)$ -->
+        <testsuite name="refactor">
+            <directory>tests/Unit</directory>
+            <directory>tests/Integration</directory>
+            <directory>tests/Performance</directory>
+        </testsuite>
+        
+        <!-- Branch: ^(integrate-[a-zA-Z0-9]+)$ -->
+        <testsuite name="integrate">
+            <directory>tests/Unit</directory>
+            <directory>tests/Integration</directory>
+        </testsuite>
+        
+        <!-- Branch: ^(test-[a-zA-Z0-9]+)$ -->
+        <testsuite name="test">
+            <directory>tests/Unit</directory>
+            <directory>tests/Integration</directory>
+        </testsuite>
+
+        <!-- Branch: ^(document-[a-zA-Z0-9]+)$ -->
+        <testsuite name="documentation">
+            <directory>tests/Documentation</directory>
+        </testsuite>
+        
+    </testsuites>
+</phpunit>

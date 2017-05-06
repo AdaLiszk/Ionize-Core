@@ -1,0 +1,28 @@
+engines:
+  phpcodesniffer:
+    enabled: true
+    checks:
+      Squiz ControlStructures ControlSignature SpaceAfterCloseParenthesis:
+        enabled: false
+
+  phpmd:
+    enabled: true
+    checks:
+      Naming/ShortVariable:
+        enabled: false
+      Naming/ShortMethodName:
+        enabled: false
+      CleanCode/StaticAccess:
+        enabled: false
+
+ratings:
+   paths:
+   - "ionize/*"
+   - "ionize/**/*"
+   - "tests/*"
+   - "tests/**/*"
+
+exclude_paths:
+- docs/**/*
+- database/**/*
+- "**/vendor/**/*"

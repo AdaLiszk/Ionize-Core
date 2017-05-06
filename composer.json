@@ -1,0 +1,53 @@
+{
+	"name": "adaliszk/ionize-core",
+	"type": "project",
+	
+	"description": "Ionize is an Open Source PHP Content Management system created for webdesigners and developers.",
+	"keywords": ["content manager system","cms","php","multilingual","modular"],
+	"homepage": "https://adaliszk.github.io/ionize-core/",
+	
+	"license": "MIT",
+	
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+
+	"version": "2.0.0-dev",
+
+	"authors": [
+		{"role":"Developer","name":"Michel-Ange Kuntz","homepage":"http://www.partikule.net"},
+		{"role":"Developer","name":"Christophe Prudent","homepage":"http://www.toopixel.ch"},
+		{"role":"Developer","name":"Pascal Gay","homepage":"http://www.hypee.com"},
+
+		{"role":"Contributor","name":"Kay Stenschke","homepage":"http://www.coexec.com"},
+		{"role":"Contributor","name":"İskender Totoğlu","homepage":"http://www.altivebir.com.tr"},
+		{"role":"Contributor","name":"Martin Wernstahl","homepage":"https://twitter.com/wernstahl"},
+		{"role":"Contributor","name":"Bhagya Nirmaan Silva","homepage":"http://about.me/bhagyas"},
+
+		{"role":"Developer","name":"Ádám Liszkai","homepage":"https://twitter.com/adaliszk"}
+	],
+
+	"require": {
+		"php": "~7.0",
+		"vlucas/phpdotenv": "~2.2",
+		"laravel/lumen-framework": "~5.4"
+	},
+
+	"require-dev": {
+		"phpunit/phpunit": "~6.0",
+		"codeclimate/php-test-reporter": "dev-master"
+	},
+
+	"autoload": {
+		"psr-4": {
+			"Ionize\\": "ionize/",
+			"App\\": "ionize/"
+		}
+	},
+
+	"autoload-dev": {
+		"classmap": ["database/"],
+		"psr-4": {
+			"Tests\\": "tests/"
+		}
+	}
+}

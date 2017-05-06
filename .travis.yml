@@ -1,0 +1,48 @@
+language: php
+
+addons:
+  code_climate:
+    repo_token: 27457ab5045b038ddb8bbfe4852ad671cf41cc6b169d1af7e510e70859c9e027
+
+php:
+  - 7.0
+  - 7.1
+  
+env:
+  global:
+    - DB_CONNECTION=mysql
+  matrix:
+    - TEST_SUITE=unit
+    - TEST_SUITE=acceptance
+    - TEST_SUITE=integration
+    - TEST_SUITE=performance
+    - TEST_SUITE=documentation
+    -
+
+sudo: false
+  
+services:
+  - memcached
+  - mysql
+
+before_script:
+  - composer update
+
+script:  
+  - if [[ $TRAVIS_BRANCH =~ ^(master|development|version-[0-9]+.[0-9]+) ]]; then phpunit; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(document-[a-zA-Z0-9]+) ]]; then phpunit --testsuite documentation; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(feature-[a-zA-Z0-9]+) ]]; then phpunit --testsuite feature; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(refactor-[a-zA-Z0-9]+) ]]; then phpunit --testsuite refactor; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(integrate-[a-zA-Z0-9]+) ]]; then phpunit --testsuite integrate; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(implement-[a-zA-Z0-9]+) ]]; then phpunit --testsuite integrate; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(test-[a-zA-Z0-9]+) ]]; then phpunit --testsuite test; fi
+  - if [[ $TRAVIS_BRANCH =~ ^(bug-[a-zA-Z0-9]+) ]]; then phpunit --testsuite bug; fi
+  - if [[ ! -z $TEST_SUITE ]]; then phpunit --testsuite $TEST_SUITE; fi
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash) -t e381debd-979f-4df9-a094-75488804f767
+  - vendor/bin/test-reporter
+
+matrix:
+  allow_failures:
+    - env: TEST_SUITE=performance

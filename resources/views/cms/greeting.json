@@ -1,0 +1,5 @@
+[
+   {"local":false,"uri":"https://fonts.googleapis.com/css?family=Slabo+27px","as":"style"}
+  ,{"local":true,"uri":"/assets/bgpattern.png","as":"image"}
+  ,{"local":true,"uri":"/assets/logo.png","as":"image"}
+]
