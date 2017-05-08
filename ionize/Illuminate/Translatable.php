@@ -29,6 +29,6 @@
  *
  */
 
-namespace Ionize\Traits;
+namespace Ionize\Illuminate;
 
-// @TODO: Ionize\Traits\Extends
+// @TODO: Ionize\Illuminate\Translatable

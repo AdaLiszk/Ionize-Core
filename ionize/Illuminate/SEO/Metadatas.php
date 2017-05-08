@@ -29,6 +29,6 @@
  *
  */
 
-namespace Ionize\Traits\SEO;
+namespace Ionize\Illuminate\SEO;
 
-// @TODO: Ionize\Traits\SEO\Microdatas
+// @TODO: Ionize\Traits\SEO\Metadatas
