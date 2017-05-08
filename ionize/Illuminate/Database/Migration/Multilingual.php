@@ -29,7 +29,7 @@
  *
  */
 
-namespace Ionize\Helpers\Database\Migration;
+namespace Ionize\Illuminate\Database\Migration;
 
 /**
  * Multilingual Helper Class

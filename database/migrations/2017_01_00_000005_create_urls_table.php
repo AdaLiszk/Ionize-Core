@@ -32,7 +32,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Ionize\Helpers\Database\Migration\Multilingual;
+use Ionize\Illuminate\Database\Migration\Multilingual;
 
 class CreateUrlsTable extends Migration
 {

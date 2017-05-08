@@ -29,10 +29,7 @@
  *
  */
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Ionize\Helpers\Database\Migration\Multilingual;
 
 /**
  * Class CreateContentsView
