@@ -29,56 +29,80 @@
  *
  */
 
-namespace Ionize\Database;
+namespace Ionize\Database\Contents;
 
-use Ionize\Illuminate\Database\Model as DatabaseModel;
+use Illuminate\Support\Facades\Cache;
+use Ionize\Illuminate\Contents\Contents as ContentsInterface;
+use Ionize\Illuminate\Iterating;
+
 
 /**
  * Database Model for Contents Handling
  *
  * @project: IonizeCMS
  * @homepage: https://ionizecms.com
+ *
  * @package: Ionize\Database
  * @author: Ádám Liszkai <adaliszk@gmail.com>
  * @since: v2.0.0
  *
  * @inheritdoc
  */
-class Contents extends DatabaseModel
+class ContentRepository implements ContentsInterface
 {
-    protected $table = 'contents';
+    use Iterating;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'id', 'cname', 'id_language', 'uri', 'uri_short', 'uri_long', 'id_author',
-        'published', 'publishing_time', 'unpublishing_time', 'indexed', 'flag',
-        'scope', 'generation', 'childrends', 'extends_fields', 'extends_datas',
-        'title', 'subtitle', 'title_window', 'title_menu',
-        'preview', 'body',
-        'seo_keywords', 'seo_description',
-        'seo_schema', 'seo_schema_data',
-        'seo_priority'
-    ];
+    private $db;
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = true;
+    public function __construct(Content $databaseModel)
+    {
+        $this->db = $databaseModel;
+    }
 
-    /**
-     * The attributes that are autofilled dates
-     *
-     * @var array
-     */
-    protected $dates = [
-        'created_at', 'updated_at', 'deleted_at'
-    ];
+    public function getByName(string $name): iterable
+    {
+        $result = $this->db->getByName($name);
+
+        if ($result->count() > 0)
+        {
+            foreach($result->all() as $item)
+            {
+                $this->items[] = $item;
+            }
+        }
+
+        return $this;
+    }
+
+    public function getByURI(string $uri): iterable
+    {
+        $result = $this->db->getByURI($uri);
+
+        if ($result->count() > 0)
+        {
+            foreach($result->all() as $item)
+            {
+                $this->items[] = $item;
+            }
+        }
+
+        return $this;
+    }
+
+    public function getById(int $id): iterable
+    {
+        $result = $this->db->getById($id);
+
+        if ($result->count() > 0)
+        {
+            foreach($result->all() as $item)
+            {
+                $this->items[] = $item;
+            }
+        }
+
+        return $this;
+    }
 }
 /* End of file: Contents.php */
 /* Location: Ionize\Database */

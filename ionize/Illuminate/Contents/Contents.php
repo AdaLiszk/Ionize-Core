@@ -29,19 +29,22 @@
  *
  */
 
-namespace Ionize;
+namespace Ionize\Illuminate\Contents;
 
-use Ionize\Illuminate\Model as ViewModel;
+use Iterator;
 
 /**
- * Asset Handler
+ * Database Contents Interface
  *
- * @package Ionize
+ * @package Ionize\Illuminate\Database\Contents
  * @author: Ádám Liszkai <adaliszk@gmail.com>
  * @since: v2.0.0
  */
-class Asset implements ViewModel
+interface Contents extends Iterator
 {
+    public function getByName( string $name ): iterable;
+    public function getByURI( string $uri ): iterable;
+    public function getById( int $id ): iterable;
 }
-/* End of file: Asset.php */
-/* Location: Ionize */
+/* End of file Contents.php */
+/* Location: Ionize\Illuminate\Database\Contents */

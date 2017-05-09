@@ -29,6 +29,19 @@
  *
  */
 
-namespace Ionize\Traits;
+namespace Ionize;
 
-// @TODO: Ionize\Traits\Groups
+use Ionize\Illuminate\Model as ViewModel;
+
+/**
+ * Navigation Handler
+ *
+ * @package Ionize
+ * @author: Ádám Liszkai <adaliszk@gmail.com>
+ * @since: v2.0.0
+ */
+class Navigation implements ViewModel
+{
+}
+/* End of file: Navigation.php */
+/* Location: Ionize */

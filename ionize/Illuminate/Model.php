@@ -31,11 +31,12 @@
 
 namespace Ionize\Illuminate;
 
-interface ViewModel
+use Iterator;
+
+interface Model extends Iterator
 {
-    public function get(): array;
-    public function getById(int $id): ViewModel;
-    public function getByName(string $name): ViewModel;
+    public function getById(int $id): iterable;
+    public function getByName(string $name): iterable;
 }
 /* End of file: ViewModel.php */
 /* Location: Ionize\Illuminate */

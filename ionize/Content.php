@@ -31,7 +31,8 @@
 
 namespace Ionize;
 
-use Ionize\Illuminate\Database\Model as DatabaseModel;
+use Ionize\Illuminate\Iterating;
+use Ionize\Illuminate\Model as ViewModel;
 
 /**
  * Content Handler
@@ -40,51 +41,29 @@ use Ionize\Illuminate\Database\Model as DatabaseModel;
  * @author: Ádám Liszkai <adaliszk@gmail.com>
  * @since: v2.0.0
  */
-class Content
+class Content implements ViewModel
 {
-    protected $id = null;
+    use Iterating;
 
-    protected $data = [];
-
-    public function __construct(array $data = [])
+    public function getById(int $id): iterable
     {
-        if (!empty($data))
-        {
-            $this->initialize($data);
-        }
-    }
-
-    private function initialize(array $data)
-    {
-        $this->id = $data['id'];
-        $this->data = $data;
-    }
-
-    public function getById(int $id)
-    {
-        $result = Database\Contents::where('id', $id)->get();
-        if ($result->count()>0)
-        {
-            $data = $result->get(0)->getAttributes();
-            $this->initialize((array)$data);
-        }
+        // TODO: Implement getById() method.
 
         return $this;
     }
 
-    public function __get($name)
+    public function getByName(string $name): iterable
     {
-        if (isset($this->data[$name]))
-        {
-            return $this->data[$name];
-        }
+        // TODO: Implement getByName() method.
 
-        return null;
+        return $this;
     }
 
-    public function __toString()
+    public function getByURI(string $uri): iterable
     {
-        return (string) $this->data['body'] ?? '';
+        // TODO: Implement getByURI() method.
+
+        return $this;
     }
 }
 /* End of file: Content.php */

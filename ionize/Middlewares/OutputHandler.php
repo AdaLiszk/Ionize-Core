@@ -31,6 +31,7 @@
 
 namespace Ionize\Middlewares;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Ionize\Application;
 use Ionize\Content;
@@ -83,10 +84,11 @@ class OutputHandler
             return $next($request);
         }
 
-        $result = $this->url->getByPath("/{$request->path()}");
+        /** @var Collection $result */
+        $result = $this->url->getByURI("/{$request->path()}");
         if ($result->count()>0)
         {
-            $url = $result->get(0);
+            $url = $result->first();
             $content = $this->content->getById($url->id_content);
 
             $response = view('sample_content')->withContent($content);

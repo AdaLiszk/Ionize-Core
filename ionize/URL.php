@@ -31,6 +31,9 @@
 
 namespace Ionize;
 
+use Ionize\Illuminate\Iterating;
+use Ionize\Illuminate\Model as ViewModel;
+
 /**
  * URL handler
  *
@@ -38,17 +41,29 @@ namespace Ionize;
  * @author: Ádám Liszkai <adaliszk@gmail.com>
  * @since: v2.0.0
  */
-class URL
+class URL implements ViewModel
 {
-    /**
-     * Get URI by Request Path
-     *
-     * @param string $uri
-     * @return \Illuminate\Support\Collection
-     */
-    public function getByPath(string $uri)
+    use Iterating;
+
+    public function getById(int $id): iterable
     {
-        return Database\URL::where('uri', $uri)->get();
+        // TODO: Implement getById() method.
+
+        return $this;
+    }
+
+    public function getByName(string $name): iterable
+    {
+        // TODO: Implement getByName() method.
+
+        return $this;
+    }
+
+    public function getByURI(string $uri): iterable
+    {
+        // TODO: Implement getByURI() method.
+
+        return $this;
     }
 }
 /* End of file: URL.php */

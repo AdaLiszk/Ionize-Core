@@ -29,6 +29,22 @@
  *
  */
 
-namespace Ionize\Traits;
+namespace Ionize\Illuminate\Contents;
 
-// @TODO: Ionize\Traits\Getters
+use Illuminate\Support\Collection;
+
+/**
+ * Content
+ *
+ * @package Ionize\Illuminate\Contents
+ * @author: Ádám Liszkai <adaliszk@gmail.com>
+ * @since: v2.0.0
+ */
+interface Content
+{
+    public function getByName( string $name ): Collection;
+    public function getByURI( string $uri ): Collection;
+    public function getById( int $id ): Collection;
+}
+/* End of file Content.php */
+/* Location: Ionize\Illuminate\Contents */
