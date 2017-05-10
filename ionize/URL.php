@@ -33,6 +33,7 @@ namespace Ionize;
 
 use Ionize\Illuminate\Iterating;
 use Ionize\Illuminate\Model as ViewModel;
+use Ionize\Illuminate\Urls\Urls as UrlRepository;
 
 /**
  * URL handler
@@ -44,6 +45,13 @@ use Ionize\Illuminate\Model as ViewModel;
 class URL implements ViewModel
 {
     use Iterating;
+
+    private $repository;
+
+    public function __construct(UrlRepository $repo)
+    {
+        $this->repository = $repo;
+    }
 
     public function getById(int $id): iterable
     {
@@ -61,7 +69,12 @@ class URL implements ViewModel
 
     public function getByURI(string $uri): iterable
     {
-        // TODO: Implement getByURI() method.
+        $result = $this->repository->getByURI($uri);
+
+        foreach ($result as $item)
+        {
+            $this->items[] = $item;
+        }
 
         return $this;
     }

@@ -31,8 +31,10 @@
 
 namespace Ionize;
 
+
 use Ionize\Illuminate\Iterating;
 use Ionize\Illuminate\Model as ViewModel;
+use Ionize\Illuminate\Contents\Contents as ContentRepository;
 
 /**
  * Content Handler
@@ -45,25 +47,68 @@ class Content implements ViewModel
 {
     use Iterating;
 
+    private $repository;
+    private $item;
+
+    public function __construct(ContentRepository $repo)
+    {
+        $this->repository = $repo;
+    }
+
     public function getById(int $id): iterable
     {
-        // TODO: Implement getById() method.
+        $result = $this->repository->getById($id);
+        $this->item = $result->first();
+
+        foreach ($result as $item)
+        {
+            $this->items[] = $item;
+        }
 
         return $this;
     }
 
     public function getByName(string $name): iterable
     {
-        // TODO: Implement getByName() method.
+        $result = $this->repository->getByName($name);
+        $this->item = $result->first();
+
+        foreach ($result as $item)
+        {
+            $this->items[] = $item;
+        }
 
         return $this;
     }
 
     public function getByURI(string $uri): iterable
     {
-        // TODO: Implement getByURI() method.
+        $result = $this->repository->getByURI($uri);
+        $this->item = $result->first();
+
+        foreach ($result as $item)
+        {
+            $this->items[] = $item;
+        }
 
         return $this;
+    }
+
+    public function __get($name)
+    {
+        return $this->item->$name;
+    }
+
+    public function __debugInfo()
+    {
+        $debugInfo = [];
+
+        foreach ($this->item->getAttributes() as $name => $value)
+        {
+            $debugInfo[$name] = htmlspecialchars($value);
+        }
+
+        return $debugInfo;
     }
 }
 /* End of file: Content.php */
