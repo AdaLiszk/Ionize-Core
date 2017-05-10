@@ -29,7 +29,10 @@
  *
  */
 
-namespace Ionize\Database;
+namespace Ionize\Database\Urls;
+
+use Ionize\Illuminate\Urls\Url as UrlInterface;
+use Illuminate\Support\Collection;
 
 use Ionize\Illuminate\Database\Model as DatabaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -45,7 +48,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *
  * @inheritdoc
  */
-class URL extends DatabaseModel
+class Url extends DatabaseModel implements UrlInterface
 {
     use SoftDeletes;
 
@@ -75,6 +78,11 @@ class URL extends DatabaseModel
     protected $dates = [
         'created_at', 'updated_at', 'deleted_at'
     ];
+
+    public function getByURI(string $uri): Collection
+    {
+        return $this->where('uri', $uri)->get();
+    }
 }
-/* End of file: URL.php */
+/* End of file: Url.php */
 /* Location: Ionize\Database */
