@@ -1,59 +1,58 @@
 {
-	"name": "adaliszk/ionize-core",
-	"type": "project",
-	
-	"description": "Ionize is an Open Source PHP Content Management system created for webdesigners and developers.",
-	"keywords": ["content manager system","cms","php","multilingual","modular"],
-	"homepage": "https://adaliszk.net/ionize-core",	
-	"support": {
+    "name": "adaliszk/ionize-core",
+    "type": "project",
+
+    "description": "Ionize is an Open Source PHP Content Management system created for webdesigners and developers.",
+    "keywords": ["content manager system","cms","php","multilingual","modular"],
+    "homepage": "https://adaliszk.net/ionize-core",
+    "support": {
         "issues": "https://github.com/adaliszk/ionize-core/issues",
         "source": "https://github.com/adaliszk/ionize-core"
     },
-	
-	"license": "MIT",
-	
-	"minimum-stability": "dev",
-	"prefer-stable": true,
 
-	"version": "2.0.0-dev",
-	
-	"repositories": [
+    "license": "MIT",
+
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+
+    "version": "2.0.0-dev",
+
+    "repositories": [
         {
             "type": "git",
             "url": "https://github.com/adaliszk/ionize-core.git"
         }
     ],
 
-	"authors": [
-		{"role":"Developer","name":"Ádám Liszkai","homepage":"https://twitter.com/adaliszk"}
-	],
+    "authors": [
+        {"role":"Developer","name":"Ádám Liszkai","homepage":"https://twitter.com/adaliszk"}
+    ],
 
-	"require": {
-		"php": "~7.0",
-		"laravel/lumen-framework": "~5.4",
-		"vlucas/phpdotenv": "~2.2",
-		"mockery/mockery": "1.0.x-dev"
-	},
+    "require": {
+        "php": "~7.0",
+        "laravel/lumen-framework": "~5.4"
+    },
 
-	"require-dev": {
-		"phpunit/phpunit": "~6.0"
-	},
-	
-	"suggest": {
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "mockery/mockery": "1.0.x-dev"
+    },
+
+    "suggest": {
+        "vlucas/phpdotenv": "~2.2",
         "codeclimate/php-test-reporter": "dev-master"
     },
 
-	"autoload": {
-		"psr-4": {
-			"Ionize\\": "ionize/",
-			"App\\": "ionize/"
-		}
-	},
+    "autoload": {
+        "psr-4": {
+            "Ionize\\": "ionize/",
+        }
+    },
 
-	"autoload-dev": {
-		"classmap": ["database/"],
-		"psr-4": {
-			"Tests\\": "tests/"
-		}
-	}
+    "autoload-dev": {
+        "classmap": ["database/"],
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
 }
