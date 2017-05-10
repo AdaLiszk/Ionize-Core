@@ -12,7 +12,7 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
-    //private $variables = [];
+    private $variables = [];
 
     /**
      * A list of the exception types that should not be reported.
@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        /* $reflection = new ReflectionClass($e);
+        $reflection = new ReflectionClass($e);
         $this->variables['name'] = $reflection->getName();
         $this->variables['shortName'] = $reflection->getShortName();
         $this->variables['file'] = str_replace(base_path(), '', $e->getFile());
@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
         if($reflection->getShortName() == 'NotFoundHttpException')
         {
             $this->variables['uri_path'] = $request->path();
-            $content = view('cms.not_found', $this->variables);
+            $content = view('cms.exception', $this->variables);
             return response($content, 404);
         }
         else
@@ -69,9 +69,9 @@ class Handler extends ExceptionHandler
             // @think: Settings for showing a custom content when it's happening
             $content = view('cms.exception', $this->variables);
             return response($content, 500);
-        } */
+        }
 
-        return parent::render($request, $e);
+        //return parent::render($request, $e);
     }
 }
 /* End of file: Handler.php */
