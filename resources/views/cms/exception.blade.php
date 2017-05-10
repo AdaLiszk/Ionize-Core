@@ -38,10 +38,10 @@
             margin: 0; padding: 0;
         }
         html {
-            background-color: #EEE;
+            background: #155799 url('assets/ionize/bgpattern.png') repeat top left;
         }
         body {
-            background: transparent url('assets/bgpattern.png') repeat top left;
+            background: transparent url('assets/ionize/bottom_pattern_bright.png') repeat-x bottom left;
         }
         h1, h2, h3, h4, h5, h6 {
             margin: 0; padding: 0; font-weight: 300;
@@ -86,11 +86,15 @@
             background: #222; padding: 10px; font-size: 70%;
             margin: 10px -20px -20px -20px;
 
+            max-height: 600px; overflow: auto;
+
             font-family: 'Source Code Pro', monospace;
         }
         .trace .item {
             display: flex; flex-direction: row;
             justify-content: space-between;
+
+            border-bottom: 1px dotted #000;
         }
         @media screen and (max-width: 1440px)
         {
@@ -111,7 +115,7 @@
         <div class="trace">
             @foreach ($trace as $item)
                 <div class="item">
-                    <span class="step">@if(isset($item['class'])) {{ $item['class'] }} {{ $item['type'] }} @endif {{ $item['function'] }}</span>
+                    <span class="step">@if(isset($item['class'])) {{ $item['class'] }} {{ $item['type'] }} @endif {{ $item['function'] }}()</span>
                     @if (isset($item['file']))
                         <span class="file">{{ str_replace($basePath,'',$item['file']) }}:{{ $item['line'] }}</span>
                     @endif
