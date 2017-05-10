@@ -32,8 +32,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Ionize\Illuminate\Database\Migration\Multilingual;
 
-class CreateLanguagesTable extends Migration
+class CreateNavigationItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -42,22 +43,26 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('navigation_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            // Identify the User
+            // Identify the Navigation
             $table->increments('id');
-            $table->string('name', 30);
-            $table->string('uri', 60);
+            $table->integer('id_navigation')->unsigned();
+            $table->foreign('id_navigation')->references('id')
+                  ->on('navigations')->onUpdate('cascade')->onDelete('cascade');
+            $table->integer('id_parent')->unsigned()->nullable();
+            $table->foreign('id_parent')->references('id')
+                  ->on('navigation_items')->onUpdate('cascade')->onDelete('set null');
+
             $table->integer('ordering')->unsigned()->default(0);
-            $table->boolean('default')->default(false);
 
-            // Extended informations
-            $table->json('extends')->nullable();
+            $table->timestamps();
 
-            // Unique keys
-            $table->unique('name', 'UNQ_LANGUAGES_NAME');
-            $table->unique('uri', 'UNQ_LANGUAGES_URI');
+            $table->string('title', 300);
+            $table->string('description', 300);
+
+            $table->softDeletes();
         });
     }
 
@@ -69,6 +74,6 @@ class CreateLanguagesTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('languages');
+        Schema::dropIfExists('navigation_items');
     }
 }

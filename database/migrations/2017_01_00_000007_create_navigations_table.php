@@ -32,8 +32,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Ionize\Illuminate\Database\Migration\Multilingual;
 
-class CreateLanguagesTable extends Migration
+class CreateNavigationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -42,22 +43,21 @@ class CreateLanguagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('navigations', function (Blueprint $table) {
             $table->engine = 'InnoDB';
 
-            // Identify the User
+            // Identify the Navigation
             $table->increments('id');
-            $table->string('name', 30);
-            $table->string('uri', 60);
-            $table->integer('ordering')->unsigned()->default(0);
-            $table->boolean('default')->default(false);
+            $table->string('name', 100);
 
-            // Extended informations
-            $table->json('extends')->nullable();
+            $table->timestamps();
 
-            // Unique keys
-            $table->unique('name', 'UNQ_LANGUAGES_NAME');
-            $table->unique('uri', 'UNQ_LANGUAGES_URI');
+            $table->string('title', 300);
+            $table->string('description', 300);
+
+            $table->softDeletes();
+
+            $table->unique('name', 'UNQ_NAVIGATION_NAME');
         });
     }
 
@@ -69,6 +69,6 @@ class CreateLanguagesTable extends Migration
     public function down()
     {
         Schema::disableForeignKeyConstraints();
-        Schema::dropIfExists('languages');
+        Schema::dropIfExists('navigations');
     }
 }

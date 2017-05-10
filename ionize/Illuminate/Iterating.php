@@ -45,6 +45,11 @@ trait Iterating
     protected $items = [];
     protected $position = 0;
 
+    public function getItems()
+    {
+        return $this->items;
+    }
+
     public function count()
     {
         return count($this->items);
@@ -112,5 +117,5 @@ trait Iterating
         $this->position = 0;
     }
 }
-/* End of file Iteratable.php */
+/* End of file Iterating.php */
 /* Location: Ionize\Illuminate */
