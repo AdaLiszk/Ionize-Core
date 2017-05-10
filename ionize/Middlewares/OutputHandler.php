@@ -31,7 +31,6 @@
 
 namespace Ionize\Middlewares;
 
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Ionize\Application;
 use Ionize\Content;
@@ -60,14 +59,17 @@ class OutputHandler
      * OutputHandler constructor
      *
      * @param Application $appInstance
-     * @param URL $urlModel
-     * @param Content $contentModel
+     * @param URL $urlViewModel
+     * @param Content $contentViewModel
      */
-    public function __construct(Application $appInstance, URL $urlModel, Content $contentModel)
-    {
+    public function __construct(
+        Application $appInstance,
+        URL $urlViewModel,
+        Content $contentViewModel
+    ) {
         $this->app = $appInstance;
-        $this->content = $contentModel;
-        $this->url = $urlModel;
+        $this->content = $contentViewModel;
+        $this->url = $urlViewModel;
     }
 
     /**
@@ -84,15 +86,17 @@ class OutputHandler
             return $next($request);
         }
 
-        /** @var Collection $result */
-        $result = $this->url->getByURI("/{$request->path()}");
+        /** @var \Illuminate\Database\Eloquent\Collection $result */
+        $result = $this->url->getByURI("{$request->path()}");
         if ($result->count()>0)
         {
             $url = $result->first();
             $content = $this->content->getById($url->id_content);
 
-            $response = view('sample_content')->withContent($content);
+            // @TODO: Get the view name from the Content
+            $response = view('index', ['content'=>$content]);
 
+            // Just print the elapsed time and memory usage if it's needed
             if (env('APP_BENCHMARKS', false))
             {
                 $replace = [

@@ -66,19 +66,23 @@ class AssetsHandler
     {
         if (strpos($request->path(), 'assets/') === 0)
         {
-            $assetFile = $this->app->resourcePath() . DIRECTORY_SEPARATOR . $request->path();
+            $assetFileLocations[] = $this->app->basePath('public') . DIRECTORY_SEPARATOR . $request->path();
+            $assetFileLocations[] = $this->app->resourcePath() . DIRECTORY_SEPARATOR . $request->path();
 
-            if (file_exists($assetFile) && is_file($assetFile))
+            foreach($assetFileLocations as $assetFile)
             {
-                $fileContents = file_get_contents($assetFile);
-                $mimeType = mime_content_type($assetFile);
-                $baseName = basename($assetFile);
+                if (file_exists($assetFile) && is_file($assetFile))
+                {
+                    $fileContents = file_get_contents($assetFile);
+                    $mimeType = mime_content_type($assetFile);
+                    $baseName = basename($assetFile);
 
-                return response($fileContents)
-                    ->header('Content-Type', $mimeType)
-                    ->header('Pragma', 'public')
-                    ->header('Content-Disposition', 'inline; filename="'.$baseName.'"')
-                    ->header('Cache-Control', 'max-age=60, must-revalidate');
+                    return response($fileContents)
+                        ->header('Content-Type', $mimeType)
+                        ->header('Pragma', 'public')
+                        ->header('Content-Disposition', 'inline; filename="'.$baseName.'"')
+                        ->header('Cache-Control', 'max-age=60, must-revalidate');
+                }
             }
         }
 
